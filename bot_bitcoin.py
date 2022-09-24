@@ -1,15 +1,8 @@
 import ssl
 import json
 
-import websocket
 import rel
-
-def comprar():
-    pass
-
-
-def vender():
-    pass
+import websocket
 
 
 def ao_abrir(ws):
@@ -47,7 +40,6 @@ if __name__ == '__main__':
                                 on_message=ao_receber_mensagem,
                                 on_error=erro)
 
-    ws.run_forever(dispatcher=rel, sslopt={"cert_reqs": ssl.CERT_NONE}) # Set dispatcher to automatic reconnection
+    ws.run_forever(dispatcher=rel, sslopt={"cert_reqs": ssl.CERT_NONE})  # Set dispatcher to automatic reconnection
     rel.signal(2, rel.abort)  # Keyboard Interrupt
     rel.dispatch()
-
