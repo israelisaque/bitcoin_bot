@@ -3,6 +3,25 @@ import json
 
 import rel
 import websocket
+import bitstamp.client
+
+import credenciais
+
+
+def cliente():
+    return bitstamp.client.Trading(username=credenciais.USERNAME,
+                                   key=credenciais.KEY,
+                                   secret=credenciais.SECRET)
+
+
+def comprar(quantidade):
+    trading_client = cliente()
+    trading_client.buy_market_order(quantidade)
+
+
+def vender(quantidade):
+    trading_client = cliente()
+    trading_client.sell_market_order(quantidade)
 
 
 def ao_abrir(ws):
@@ -43,3 +62,4 @@ if __name__ == '__main__':
     ws.run_forever(dispatcher=rel, sslopt={"cert_reqs": ssl.CERT_NONE})  # Set dispatcher to automatic reconnection
     rel.signal(2, rel.abort)  # Keyboard Interrupt
     rel.dispatch()
+
