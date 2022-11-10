@@ -23,7 +23,7 @@ def vender(quantidade):
     trading_client = cliente()
     trading_client.sell_market_order(quantidade)
 
-
+ 
 def ao_abrir(ws):
     print("Abriu a conexão")
 
